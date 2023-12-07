@@ -1,0 +1,585 @@
+.title {
+    background-color: rgb(168, 218, 252);
+    font-size: large;
+    height: 120px;
+  
+    
+
+ 
+}
+
+
+.firstbutton{
+    --sds-c-button-brand-color-background: #338720;
+    --slds-c-button-brand-color-background-hover:#338720;
+    --sds-c-button-text-color: #f4f7f9;
+}
+
+.description{
+    background-color: white;
+    height: 300px;
+}
+
+.container{
+    background-color:  #fff;
+    
+    padding: 20px;
+      
+}
+.greenBackgroundButton {
+    font-weight: bold;
+   
+    text-align: center;
+    color:#338720;
+    
+}
+.header {
+    background-color: #338720;
+    padding: 20px;
+    border-radius: 5px;
+    
+   
+}
+.headerplanname {
+    background-color: #338720;
+    padding: 20px;
+    border-radius: 5px;
+    color: white;
+
+   
+}
+.afterheader{
+    padding: 1.5rem 1rem;
+    background: #fff;
+    padding: 1.5rem 1rem;
+    padding-left: 135px;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.625rem;
+    max-width: 52.5rem;
+    
+    color: #666;
+}
+.headertext{
+    padding-left: 135px;
+    color: white;
+}
+.footer {
+    padding-left: 135px;
+}
+.inputbox{
+    padding-left: 200px;
+    border-color: #c35500;
+}
+.ptext{
+    padding-left: 200px;
+}
+.planoptiondetails{
+    padding-left: 135px;
+    
+}
+.text-with-space {
+    margin-left: 10px; 
+    /* Adjust the spacing as needed */
+}
+
+.icon-with-space {
+    margin-right: 10px; /* Adjust the spacing as needed */
+    margin-top: 2px;
+    margin-bottom: 2px;
+    max-width: 50px;
+    height: 50px;
+}
+.planName{
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-left: 15px;
+}
+.planproductcss{
+    
+    display: block;
+    height: 12.5rem;
+    padding: 1.25rem 1rem;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    background-color: #338720;
+    
+}
+.after{
+    position: relative;
+    top: 100%;
+    left: 50%;
+    height: 0;
+    content: " ";
+    width: 0;
+    border: 0.75rem solid transparent;
+    border-top-color: #338720;
+    margin-left: -0.75rem;
+
+}
+
+.baseline{
+    max-width: 52.5rem;
+    margin: 0 auto;
+    padding: 3.5rem 0rem 3rem;
+    
+}
+.greycolor{
+background-color: #f2f2f2;
+}
+
+
+
+.padding{
+    padding-left: 145px;
+    width: 130%;
+
+}
+
+.box{
+    margin-bottom: 0;
+    min-height: 38.31rem;
+    position: relative;
+    max-width: 16.5rem;
+    flex: 0 0 11rem;
+    box-shadow: 0 0 0.313rem 0 #a1a1a1;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.planboxbody{
+    color: #000;
+    text-align: center;
+    padding: 1.25rem 1rem 1rem;
+}
+
+
+.planproductdescription{
+    line-height: 1.2rem;
+    padding: 0;
+    font-size: .875rem;
+}
+
+
+.header3 {
+    background-color: #338720;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+   
+}
+.backicon{
+    color: white;
+}
+.innercss{
+
+    box-sizing: border-box;
+    max-width: 52.5rem;
+    width: 100%;
+    margin: 0 auto;
+    color: #fff;
+    background: #338720;
+}
+.boxboder{
+    background: #338720;
+    box-sizing: border-box;
+    padding: 0 1rem;
+}
+.price-detail{
+    border-left: 0;
+    font-weight: 300;
+    font-size: 2.625rem;
+
+}
+.pricetext{
+    font-size: .875rem;
+    display: inline-block;
+    font-weight: 300;
+    vertical-align: top;
+    margin: 0 0 0 -0.25rem;
+}
+
+.date-section{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    position: relative;
+    padding: 0;
+    margin-left: auto;
+    text-align: right;
+}
+.start-date{
+    margin-top: 0;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.375rem;
+    padding-left: 300px;
+}
+.buttoncss{
+    line-height: 1.400rem;
+}
+.after2{
+    position: absolute;
+    top: 159px;
+    left: 241px;
+    height: 0;
+    content: " ";
+    width: 0;
+    border: 0.75rem solid transparent;
+    border-top-color: #338720;
+    margin-left: -0.75rem;
+
+}
+.static-text{
+    text-align: center;
+    font-size: 1rem;
+    padding: 3.5rem 0;
+    
+}
+.staticimage{
+    width: 5rem;
+
+}
+.staticlistview{
+    margin: 0 auto 3.5rem;
+    flex-direction: row;
+   
+    max-width: 52.5rem;
+    display: flex;
+    list-style-type: none;
+    overflow: hidden;
+}
+.li{
+  
+    padding: 0 1rem;
+    border-right: 0.0625rem solid #bfbfbf;
+    border-bottom: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;    
+    color: #666;
+    
+}
+
+.shopping-details__list{
+    padding: 3.5rem 1rem 0;
+    box-sizing: border-box;
+    background-color: #f2f2f2;
+}
+.shopping-details__list-inner {
+    max-width: 52.5rem;
+    width: 100%;
+    margin: 0 auto;
+    font-size: .875rem;
+    line-height: 1.25rem;
+}
+
+.shopping-details__list-inner h2, .shopping-details__list-inner h3 {
+    font-size: 1.6875rem;
+    line-height: 2rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    display: block;
+}
+
+.shopping-features__feature-title{
+    line-height: 1.25rem;
+    text-align: left;
+
+}
+.shopping-details__list-inner .shopping-features__waiting-period {
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.3125rem;
+    text-align: left;
+    margin: 3.5rem 0 1.125rem 0;
+}
+.shopping-details__list-inner .shopping-features__disclaimer {
+    margin: 0;
+    position: relative;
+    background: transparent;
+    padding: 1rem 0;
+    color: #000;
+    font-size: .875rem;
+    text-align: left;
+    border-top: 0.0625rem solid #00aec7;
+    border-bottom: 0.0625rem solid #00aec7;
+}
+.shopping-details__list-inner .shopping-features__header {
+    margin: 0;
+    padding: 1rem 0 0;
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+}
+.shopping-item-list {
+    padding-bottom: 3.5rem;
+    margin-bottom: 0;
+    overflow: visible;
+}
+.shopping-item-list li {
+    border-bottom: 0.0625rem solid #bfbfbf;
+}
+.shopping-item-list li {
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.shopping-item-list li {
+    font-size: .875rem;
+    line-height: .875rem;
+}
+
+h1.header--enrollee-header {
+    margin-top: 2.375rem;
+    margin-bottom: 1.5rem;
+    padding: 0;
+    font-size: 1.6875rem !important;
+    font-weight: 400;
+    
+}
+
+.required-fields-text {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    font-family: "HCo Gotham SSm A","HCo Gotham SSm B","HCo Gotham","Helvetica","Arial",sans-serif;
+    color: #666;
+    font-size: .875rem;
+    font-weight: 400;
+}
+
+.page-container, .top-section-lg {
+    max-width: 52.5rem;
+    box-sizing: border-box;
+    margin: auto;
+    position: relative;
+    min-height: 30rem;
+    margin-top: 42px;
+}
+.detailform{
+    padding: 1.5rem 1rem !important;
+    border: 0.0625rem solid #666 !important;
+    margin-bottom: 23px;
+
+    width: 343px;
+
+}
+.submit-footer {
+    padding: 1.25rem;
+    background-color: #f2f2f2;
+    margin: 3.5rem 0 0;
+    width: 345px;
+
+}
+.submit-footer .bottom-nav {
+    float: right;
+}
+a.link-with-button {
+    border: 0;
+    padding: 0.75rem 1.375rem 0.875rem 1.375rem;
+    color: #266518;
+    text-decoration: underline;
+}
+.inline-block {
+    display: inline-block;
+}
+button, .button {
+    display: inline-block;
+    padding: 0.75rem 1.375rem 0.875rem;
+    border: solid 0.0625rem #40a828;
+    border-radius: 0.1875rem;
+    background-color: #40a828;
+    color: #fff;
+    font-size: .875rem;
+    font-family: "Helvetica","Arial",sans-serif;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    outline: 0;
+}
+
+.submit-footer .div {
+    content: "";
+    display: table;
+    clear: both;
+    width: 4cm;
+    
+}
+.sticky-button{
+    padding: 0.25rem;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    width: 17%;
+    height: 50px;
+    background: #fff;
+    color: #338720;
+    position: absolute;
+    left: 417px;
+}
+.product-name{
+   
+   
+    font-size: 1.6875rem;
+    font-family: "HCo Gotham SSm A","HCo Gotham SSm B","HCo Gotham","Helvetica","Arial",sans-serif;
+    line-height: 1.2;
+    font-weight: 400;
+    margin: 0;
+    padding-bottom: 2rem;
+    display: block;
+
+}
+.containerlast {
+  
+    background: #f2f2f2;
+    color: #000;
+    box-sizing: border-box;
+    margin-top: 20px;
+    order: 1;
+    position: absolute;
+    padding: 1.5rem 2rem !important;
+    margin-bottom: 23px;
+    width: 303px;
+    top: 78px;
+    left: 382px;
+
+}
+    .containerlastcss{
+        content: "";
+    display: block;
+    width: 95px;
+    border: 3px solid #266518;
+    border-radius: 3px;
+    background: #266518;
+    margin-bottom: 1rem;
+    }
+
+    .product-selection-summary  {
+        padding-bottom: 1.5rem;
+        border-bottom: 0.0625rem solid #666;
+    }
+     .product-selection-summary span {
+        font-size: .875rem;
+    }
+     .price-summary-header {
+        padding-bottom: 1.5rem;
+        border-bottom: 0.0625rem solid #666;
+    }
+    .product-selection-summary .price-details-wrapper {
+        padding-top: 1rem;
+    }
+    .product-selection-summary .price-details-wrapper__row {
+        padding-bottom: 0.5rem;
+    }
+    .product-selection-summary .price-details-wrapper__row--price {
+        width: 56%;
+        display: inline-block;
+        vertical-align: top;
+    }
+    
+    .product-selection-summary .price-details-wrapper__row--price .tooltip-label {
+        line-height: .9;
+    }
+    .tooltip-label .tooltip-link {
+    top: 3px;
+    right: -8px;
+}
+.firstPaymentPrice{
+    padding: 0;
+    margin: 0;
+    font-weight: 400;
+
+}
+
+.borderline{
+    padding-bottom: 1rem;
+    border-bottom: 0.0625rem solid #666;
+
+}
+ .right-align {
+    text-align: right;
+    width: 30%;
+    float: right;
+    margin-top: -9px;
+}    
+.totalprice{
+    font-size: 1rem;
+    line-height: .8;
+    margin: 0;
+    font-weight: bold;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+
+}
+.totalDuePrice{
+    margin-left: 137px;
+}
+
+.price-details-wrapper{
+    margin-top: 22px;
+
+}
+.total-due{
+    line-height: .8;
+    margin: 0;
+    font-weight: bold;
+}
+.h3{
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-family: "HCo Gotham SSm A","HCo Gotham SSm B","HCo Gotham","Helvetica","Arial",sans-serif;
+    font-weight: 400;
+}
+.plan-frequency{
+    font-size: .875rem;
+    padding: 0.5rem 0;
+}
+.date{
+    padding: 0.5rem 0;
+}
+
+.broker-label{
+    margin-top: 1rem
+}
+.radioinput{
+    margin-top: 0.5rem;
+   
+}
+.back-icon{
+   
+    padding: 12px;
+    color: #fff;
+}
+
+.dark-background{
+    
+    padding: 12px;
+    color: #fff;
+}
+
+.descriptioncss{
+    color: #000;
+    text-align: center;
+    padding:0rem 0.23px 6rem;
+    flex: 1;
+
+}
+.boxdate{
+    position: absolute;
+    bottom: 0.85rem;
+    right: 0;
+    left: 0;
+    padding: 0;
+    margin-bottom: 1rem;
+}

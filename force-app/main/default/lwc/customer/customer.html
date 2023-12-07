@@ -1,0 +1,140 @@
+<template>
+<article class="cardcss" title="Get to know our Plans"  if:true={showPlans} >
+    
+            
+            <template if:true={plans} >
+                <template if:true={plans.data}>
+                    <br/>
+                    <div class="slds-grid slds-gutters slds-p-around_medium slds-col slds-size_1-of-1 ">
+                        <template for:each={plans.data} for:item="plan">
+                            <div key={plan.Id} class="slds-col">
+                                <div class="slds-box plancss "> 
+                                    <div class="slds-text-align_center">
+                                        <p ><strong>{plan.Name}</strong></p> 
+                                    </div>
+                                </div>
+                                <div class="slds-box  "> 
+                                    <p>{plan.Description__c}</p>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+                <template if:true={plans.error}>
+                    <div class="slds-text-color_error">{plans.error}</div>
+                </template>
+            </template>
+            <!-- Add some spacing below the content -->
+            <div class="slds-text-align_center">
+                <div class="slds-col">
+                    <lightning-button variant="brand" label="Shop plans" title="Primary action" onclick={handleClick}></lightning-button>
+                </div>
+            </div>
+            
+        </article>
+ 
+    
+
+    <article if:false={showform}>
+        <div class="formcss">
+
+       
+        <div class="slds-grid slds-gutters slds-p-around_medium">
+            <div class="slds-col slds-size_1-of-2">
+            <lightning-input label="Email" type="email" name="email" onchange={handleEmailChange}></lightning-input>
+            <lightning-input label="First Name" name="firstName" value={firstName} onchange={handleFirstNameChange}></lightning-input>
+            <lightning-input label="Last Name" name="lastName" value={lastName} onchange={handleLastNameChange}></lightning-input>
+           
+        </div>
+        <div class="slds-col slds-size_1-of-2">
+            <lightning-input label="Zip Code" value={zipCode} name="zipCode" onchange={handlezipCode}></lightning-input>
+            <lightning-input label="Date of Birth" type="date" value={dob} name="dob" onchange={handleDob}></lightning-input>
+        </div>
+        </div>
+        <div class="slds-grid slds-gutters slds-p-top_medium slds-text-align_center">
+            <div class="slds-col">
+                <lightning-button  class="slds-m-right_medium" variant="brand" label="Back" title="Back" onclick={handleBack} ></lightning-button>
+                <lightning-button 
+                variant="brand"
+                label="Next"
+                title="Next"
+               
+                onclick={NextApplication}
+                disabled={disableNextButton} 
+            ></lightning-button>
+               
+            </div>
+        </Div>
+    </div>
+    </article>
+
+    <lightning-card class="" title="products" if:false={showcatalogs}>
+        <template if:true={products}>
+            <template if:true={products.data}>
+                <div class="slds-grid slds-wrap slds-p-around_medium ">
+                    <template for:each={products.data} for:item="product">
+                       
+                        <div key={product.Id} class="slds-col slds-size_1-of-2">
+                            
+                            <!-- Add an onclick handler to the wrapping div -->
+                            <div class="slds-box slds-m-around_medium" >
+                                <input
+                                    type="checkbox"
+                                    name="options"
+                                    onchange={handleCheckboxChange}
+                                    data-product-id={product.Id}
+                                    checked={checkboxvalue}
+                                  
+                                /><p><strong>{product.Name}</strong></p>
+                                <p><span><strong>Description :</strong></span> {product.Description}</p>
+                                <p><span><strong> Product Code :</strong></span> {product.ProductCode}</p>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </template>
+            <template if:true={products.error}>
+                <div class="slds-text-color_error">{products.error}</div>
+            </template>
+            <div class="slds-grid slds-gutters slds-p-top_medium slds-text-align_center">
+         
+                <div class="slds-col">
+                    <lightning-button variant="brand" class="slds-m-right_medium" label="Back" title="Back" onclick={handlecatalogsBack} ></lightning-button>
+                    <lightning-button variant="brand"   label="Get Quote" title="Get Quote" onclick={handleGetQuote} ></lightning-button>
+                </div>
+                </div>
+       
+        </template>
+    </lightning-card>
+     <template if:true={showQuoteDetails}>
+    <lightning-card class="" title="Quote Details">
+        <!-- Display email, first name, last name, and product information -->
+        <div class="slds-p-around_medium">
+            <p><strong>Email:</strong> {email}</p>
+            <p><strong>First Name:</strong> {firstName}</p>
+            <p><strong>Last Name:</strong> {lastName}</p>
+            <p><strong>Selected Products:</strong></p>
+            <template for:each={selectedProducts} for:item="product">
+                <div key={product.Id} class="slds-box slds-m-around_medium">
+                    <p><strong>Name:</strong> {product.Name}</p>
+                    <p><strong>Description:</strong> {product.Description}</p>
+                    <p><strong>ProductCode:</strong> {product.ProductCode}</p>
+                    
+                </div>
+            </template>
+        </div>
+        <div class="slds-grid slds-gutters slds-p-top_medium slds-text-align_center">
+            <div class="slds-col">
+                <lightning-button   class="slds-m-right_medium" variant="brand" label="Back" title="Back" onclick={handleBack2}></lightning-button>
+            
+                <lightning-button variant="brand" label="Submit" title="Submit" onclick={handleSubmit}></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>
+
+
+
+    
+</template>
+ 

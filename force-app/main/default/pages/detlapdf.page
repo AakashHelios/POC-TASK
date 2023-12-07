@@ -1,0 +1,157 @@
+<apex:page controller="deltadentalinsController"  showHeader="false" applyBodyTag="false" applyHtmlTag="false"  renderAs="pdf">
+    <head>
+        
+        
+        
+        <style>
+            
+            @page {  
+            size: A4 Landscape; /* ISO/JIS A4 (210mm�297mm) */  
+            margin: 0.5mm; 
+            } 
+            body {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            }
+            @page:first {  
+            size: A4 Portrait; /* ISO/JIS A4 (210mm�297mm) */ 
+            margin: 5mm; 
+            margin-top: 3mm; 
+            
+            }  
+            .footer {
+           position: relative;
+            bottom: 0;
+            width: 56%;
+            text-align: justify;
+            margin-top: 5%;
+            margin-left: 30%;
+           font-family: Arial, sans-serif;
+            font-size: 11px;
+}
+            }
+            
+            .form{
+            display: flex;
+            margin-right: 10%;
+            
+            }
+            
+            
+            .detail{
+            margin-right: 5%;
+            margin-left: 13%;
+            padding: 1.5rem 1rem !important;
+            border: 0.0625rem solid #666 !important;
+            margin-bottom: 23px;
+            width: 343px;
+            }
+        </style>
+    </head>
+    
+    <body style="background-color: #f2f2f2;">
+        
+        <div style="width: 100%; text-align: center; margin-bottom: 20px;">
+            <img src="{!$Resource.deltadentalogo}" width="600" height="200" />
+        </div>
+        
+        
+        
+        
+        
+        <apex:form >
+            
+            
+            
+            <table style="width: 100%; border-collapse: collapse; border: hidden;">
+                <tr>
+                    <td style="width: 30%; padding: 28px   10px 0; border-right: hidden; text-align: center;">
+                        <br/><br/>
+                        
+                        <br/>
+                        
+                        
+                    </td>
+                    
+                    <td style="width: 70%; font-size: 1rem; padding: 28px  20px 10px 0; ">
+                        <div><stong> Email:</stong> <apex:outputText value="{!updateApplicationDetails[0].Email_Address__c}" /></div>
+                        <br/>
+                        <div><stong>Name: </stong>
+                            <apex:outputText value="{!updateApplicationDetails[0].First_Name__c}" />
+                            <apex:outputText value=" {!updateApplicationDetails[0].Last_Name__c}" />
+                        </div>
+                        <br/>
+                        
+                        <div><stong>Date of birth:</stong> <apex:outputText value="{0, date, d MMMM}">
+                            <apex:param value="{!updateApplicationDetails[0].Date_of_Birth__c}" />
+                            </apex:outputText></div>
+                        <br/>
+                 
+                        <div><stong>Gender:</stong> <apex:outputText value="{!updateApplicationDetails[0].Gender__c}" /></div>
+                        <br/>
+                        <br/>
+                        <!-- Add more fields as needed -->
+                    </td>
+                </tr>
+            </table>
+            <!-- Display Related Product Details -->
+            
+            <div style="width: 80%;
+                        margin-top: 18px;
+                        text-align: left;
+                        margin-left: 6%;
+                        margin-right: 1.5in;">
+                <table style="width: 70%; border-collapse: collapse; margin-left: auto; margin-right: 0; margin-bottom: 10px;">
+                    <tr style="font-weight: bold;">
+                        <td style="border: 1px solid black; padding: 10px;"><span style="display:inline-block; width: 35px;"></span>Name </td>
+                        <td style="border: 1px solid black; padding: 10px;">Description</td>
+                        <td style="border: 1px solid black; padding: 10px;">Unit Price</td>
+                        
+                        <td style="border: 1px solid black; padding: 10px;">Enrollment Fee</td>
+                    </tr>
+                    <apex:repeat value="{!updateApplicationDetails}" var="item">
+                        <tr>
+                            <td style="border: 1px solid black; padding: 10px;">{!updateApplicationDetails[0].Plans_Product__r.Name}  </td>
+                            <td style="border: 1px solid black; padding: 10px;">{!updateApplicationDetails[0].Plans_Product__r.Description__c}</td>
+                            <td style="border: 1px solid black; padding: 10px;">${!updateApplicationDetails[0].Plans_Product__r.Unit_Price__c}</td>
+                            
+                            <td style="border: 1px solid black; padding: 10px;">${!updateApplicationDetails[0].Plans_Product__r.Enrollment_fee__c}</td>
+                        </tr>
+                    </apex:repeat>
+                    
+                </table>
+            </div>
+            
+            
+            <div class="footer">
+        <div>
+            <h3>1. Limitations and exclusions apply. Refer to the Policy and Benefit Details Documents.<br/></h3>
+            <h3>2. Delta Dental Plans Association Fact Sheet, 2023 and American Dental Association<br/></h3>
+            <h3>3. You may view the DeltaCare USA and Delta Dental PPO Network Access Plan, as required by the Health Benefit Plan Network Access and Adequacy Act, online at deltadentalins.com. You may also contact us by calling 800-422-4234 to request a copy.<br/></h3>
+            <h3>4. Delta Dental Social Impact Report, 2021<br/></h3>
+            <h3>5. This webpage links to Delta Dental Plans Association, a national network of 39 independent Delta Dental companies that provide dental insurance.<br/></h3>
+            <h3>6. ©2022 Vision Service Plan. All rights reserved. VSP is a registered trademark, and VSP Individual Vision Plans is a trademark of Vision Service Plan.<br/></h3>
+            <h3>7. For exceptions related to your state and plan, refer to the plan Policy and Benefit Details document.<br/></h3>
+            <h3>8. DeltaCare USA plans cover implant-related procedures but do not cover the full implant procedure. Please see policy for a complete description of plan benefits, limitations, and exclusions.<br/></h3>
+			
+				
+           
+           <p>
+            *Savings estimate is evaluated according to Delta Dental’s National Provider File average procedure fees in August 2023 and represents the national average procedure fee for all Delta Dental Individual and Family plans (all ages and geographic locations) and reflects plan policies valid through July 31, 2024. Some procedures may have waiting periods that apply before plan coverage takes effect. Please see policy for a complete description of plan benefits, limitations and exclusions. In California, this applies to covered individuals utilizing an in-network provider. These rates may not apply to you.
+            </p>
+             <p>
+                Delta Dental PPO plans are underwritten by Delta Dental Insurance Company in AL, DC (Policy IENT-P-CORE-DC-R22), FL, GA, LA, MS, MT, NV and UT and by not-for-profit dental service companies in these states: CA – Delta Dental of California; PA, MD – Delta Dental of Pennsylvania; NY – Delta Dental of New York, Inc.; DE – Delta Dental of Delaware, Inc.; WV – Delta Dental of West Virginia, Inc. In Texas, Delta Dental Insurance Company provides a dental provider organization (DPO) plan.
+            </p>
+            <p>
+                
+DeltaCare USA plans are underwritten in these states by these entities: CA — Delta Dental of California; DC (Policy I-P-DC-dc-20) and FL — Delta Dental Insurance Company; MD and TX — Alpha Dental Programs, Inc.; UT — Alpha Dental of Utah, Inc.; NY — Delta Dental of New York, Inc.; NV — Alpha Dental of Nevada, Inc.; PA — Delta Dental of Pennsylvania. Delta Dental Insurance Company acts as the DeltaCare USA administrator in all these states. These companies are financially responsible for their own products.
+            </p>
+            <p>
+                Delta Dental is a registered mark of Delta Dental Plans Association.
+            </p>
+        </div>
+    </div>
+        </apex:form>
+        
+    </body>
+</apex:page>

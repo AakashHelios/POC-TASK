@@ -1,0 +1,560 @@
+<template>
+
+<!-- this below section will show 1 page -->
+<section>
+
+ 
+    <template if:true={plans} >
+    <div class="container">
+      <h1 class="slds-text-heading_large heading">Get to know our individual dental plans</h1>
+  
+        <template if:true={plans.data}>
+            <br/>
+            <div class="slds-grid slds-gutters slds-p-around_medium slds-col align center  ">
+                <template for:each={plans.data} for:item="plan">
+                    <div key={plan.Id} class="slds-col">
+                        <div class="slds-box title "> 
+                            <div class="slds-text-align_center">
+                                <p ><strong>{plan.Name}</strong></p> 
+                                <p ><strong>{plan.Subtitle__c}</strong></p> 
+                                <p >{plan.Type__c}</p> 
+                            </div>
+                        </div>
+                        <div class="slds-box slds-text-align_center description  "> 
+                            <p>{plan.Description__c}</p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </template>
+        <template if:true={plans.error}>
+            <div class="slds-text-color_error">{plans.error}</div>
+        </template>
+        <lightning-button class="slds-p-around_medium firstbutton"   variant="brand" label="Shop plans" type="button" onclick={handleShopplans}>
+        </lightning-button>
+        
+        
+        
+    </div>
+</template>
+
+</section>  
+
+<!-- this below section will show form (2 page) -->
+<section>
+
+
+    <template if:true={showform}>
+        <div class="slds-grid ">
+            <div class="slds-col   header">
+                <header>
+                    <h2> <lightning-icon icon-name="utility:back"   size="x-small" class="row dark-background" alternative-text="Connected" onclick={firstback} variant="inverse" 
+                       ></lightning-icon>
+                    <strong class="headertext">Get a Quote</strong></h2>
+                </header>
+            </div>
+            </div>
+            <br/>
+            <br/>
+
+            <div class="slds-grid slds-gutters">
+
+                <div class="slds-col ptext">
+                    
+                    <h1>We need a little more information to give you a quote.</h1>
+                    <br/>
+                    <p>All fields are required unless indicated optional.</p>
+                </div>
+            </div>
+            <br/>
+        <div class="slds-grid slds-gutters slds-wrap">
+            <div class="slds-col   inputbox" >
+                <div class="slds-form-element">
+                    <label  for="zipCode"><strong> What’s your ZIP code? </strong></label>
+                    <div class="slds-form-element__control">
+                        <input type="text" id="zipCode" class="slds-input slds-size_1-of-8" placeholder="Enter ZIP code" value={storedZipCode} onchange={handleZipCode}/>
+                    </div>
+                </div>
+                <br/>
+               
+                    <div class="slds-form-element">
+                        <label for="birthDate"><strong> What’s your birthdate?</strong> (mm/dd/yyyy)</label>
+                        <div class="slds-form-element__control">
+                            <input type="date" id="birthDate" class="slds-input slds-size_1-of-6" placeholder="Enter birthdate" value={storedBirthDate}  onchange={handleDob}/>
+                        </div>
+                    </div>
+              
+                    <br/>
+               
+                    <div class="slds-form-element">
+                        <label  for="numPeople">
+                                <strong> 
+                           Including yourself, how many people need coverage?
+                        </strong>
+                        </label>
+                        <div class="slds-form-element__control">
+                            <input type="text" id="numPeople" class="slds-input slds-size_1-of-8 slds-m-right_medium" placeholder="Enter number" required value={numPeople} />
+                            <lightning-button-icon class="slds-m-right_medium" icon-name="utility:dash" alternative-text="sub" title="sub" onclick={subtractNumber}></lightning-button-icon>
+                            <lightning-button-icon icon-name="utility:add" alternative-text="add" title="add" onclick={addNumber}></lightning-button-icon>
+                        </div>
+                        <br/>
+                        <div if:true={shownumber}>
+                            <div class="slds-form-element__control">
+                                <input type="text" class="slds-input slds-size_1-of-6" placeholder="Enter birthdate" />
+                            </div>
+                        </div>
+                    </div>
+                
+                
+            </div>
+        </div>
+        <div class="slds-grid slds-gutters slds-p-top_medium slds-text-align_center">
+            <div class="slds-col">
+                <lightning-button  class="firstbutton" variant="brand" label="Shop Plans" title="Shop Plans" onclick={handleShopPlan} ></lightning-button>
+     </div>
+        </div>
+        <div class="slds-grid ">
+            
+            <footer>
+                <br/>
+                <br/>
+
+                <img class="footer" src={deltalogo} alt="Delta Dental Logo">
+            </footer>
+        </div>
+    </template>
+</section>
+
+<!-- this below section will show plan options (3 page) -->
+<section>
+    <template if:true={planOption}>
+        <div class="slds-grid ">
+            <div class="slds-col   header">
+                <header>
+                    <h2>  <lightning-icon icon-name="utility:back"   size="x-small" class="row dark-background" onclick={secondback} alternative-text="Connected" variant="inverse" 
+                        ></lightning-icon>
+                    <strong class="headertext">Plan Option</strong></h2>
+                </header>
+            </div>
+            </div>
+
+            <div class="afterheader">
+                <p>There are {numberplan} plan(s) for {numPeople} person(s) in {storedZipCode}</p>
+            </div>
+            <div class="greycolor">
+
+           
+             <!-- Display plan names -->
+             <br/>
+             <br/>
+    <div class="slds-grid slds-gutters slds-p-around_medium slds-col ">
+        <template for:each={plansOption.data} for:item="plan">
+            <template if:true={planOption}>
+                <div key={plan.Id} class="slds-col">
+                    <div class="planoptiondetails">
+
+                        <p> <span class="planName"><strong>{plan.Name} Plans</strong></span></p>
+                        <br/>
+
+                        <p>
+                            <img src={icon1}  alt="icon 1" class="icon-with-space">
+                         
+                            <span class="text-with-space">Save up to 40%1 at 1,994 network dentists</span>
+                        </p>
+                        <p>
+                            <img src={icon2}  alt="icon 2" class="icon-with-space">
+                            <span class="text-with-space">Visit any licensed dentist</span>
+                        </p>
+                        <p>
+                            <img src={icon3}  alt="icon 3" class="icon-with-space">
+                            <span class="text-with-space">Low-cost cleanings</span>
+                        </p>
+                        <p>
+                            <img src={icon4}  alt="icon 4" class="icon-with-space">
+                            <span class="text-with-space">Orthodontic coverage available</span>
+                        </p>
+                      </div>          
+             
+                </div>
+            </template>
+        </template>
+    </div>
+    
+
+<template if:true={planOption}>
+
+
+    <div class="slds-grid slds-gutters slds-p-around_medium">
+        <template for:each={PlanProduct.data} for:item="PlanProduct">
+            <div key={PlanProduct.Id} class="slds-col slds-size_1-of-5">
+                <div class="padding">
+                    <div class="box">
+                        <div class="slds-text-align_center">
+                            <div class="planproductcss">
+                                <p><strong>${PlanProduct.Unit_Price__c} <br/> Per Month</strong></p>
+                                <p>${PlanProduct.Enrollment_fee__c} Enrollment Fee</p>
+                                <br/>
+                                <p><strong>{PlanProduct.Plan__r.Name}</strong></p>
+                                <p><strong>{PlanProduct.Name}</strong></p>
+                            </div>
+                            <div class="after"></div>
+                            <div class="planboxbody">
+                                <div class="planproductdescription">
+                                    <p class="descriptioncss">{PlanProduct.Description__c}</p>
+                                    <br/>
+                                    <div class="boxdate">
+
+                                        <p>Starts as soon as: <br/>{futureDate}</p>
+                                        <br/>
+                                        <lightning-button  class="firstbutton" variant="brand" label="Plan details" type="button" onclick={handlePlandetails} data-plan-id={PlanProduct.Id}></lightning-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+        <footer>  <div class="baseline">
+            <h2>This is only a summary of benefits. Limitations, exclusions, annual deductibles, copayments and maximums apply. For a complete description of benefits, see the Policy and Benefit Details.</h2>
+        
+        </div></footer>
+</template>
+    
+</div>
+<footer>
+    <br/>
+    <br/>
+
+    <img class="footer" src={deltalogo} alt="Delta Dental Logo">
+</footer>
+    
+
+
+            
+
+    </template>
+
+</section>
+
+<section>
+    <template if:true={plansdetail}>
+        <div class="slds-grid ">
+            <div class="slds-col header3">
+                <header>
+                    <h2>
+                        <lightning-icon icon-name="utility:back"   size="x-small" class="row dark-background" onclick={thirdback} alternative-text="Connected" variant="inverse" 
+                        ></lightning-icon>
+                        <strong class="headertext">Plan details</strong>
+                    </h2>
+                </header>
+            </div>
+        </div>
+
+        <section class="boxboder">
+
+     
+            <div class="slds-grid slds-gutters slds-p-around_medium innercss">
+                <div class="slds-col slds-size_1-of-5">
+                    <div class="selectedplanname">
+                        <p><strong>{selectedPlanDetails.name} {selectedPlanDetails.pname}</strong></p>
+                    </div>
+                    <p><span class="price-detail"><strong>${selectedPlanDetails.unitPrice}</strong></span></p>
+                    <p class="pricetext"> Per Month</p>
+                    <p>${selectedPlanDetails.enrollmentFee} Enrollment Fee</p>
+                   
+                </div>
+                <div class="slds-col date-section">
+                    <p class="start-date"><strong>Starts as soon as {futureDate}</strong></p>
+                    <br/>
+                    <br/>
+                    <button aria-label="Buy Plan" form="buyPlan" onclick={handleBuyPlan} class="button inverted--on-red sticky-button">Buy Plan</button> <div class="after2"></div>
+                </div>
+            </div>
+            
+    </section>
+    
+    <section class="static-text" >
+        <div class="slds-m-around-medium">
+
+            <p>You can visit any licensed dentist, but you'll typically save the most with a PPO network dentist.</p>
+        </div>
+        <br/>
+ <ul class="staticlistview">
+
+
+    <li class="li">
+        <img src={static1}  alt="static 1" class="staticimage">
+        <h2>Premium Benefits and Coverage</h2>
+        <p>Our Premium plan has the most robust coverage we offer. It covers more procedures, has lower out-of-pocket costs and covers root canals, crowns, dentures and tooth implants after 1 year.</p>
+    </li>
+    <li class="li">
+        <img src={static2}  alt="static 2" class="staticimage">
+        <h2>$50 Annual deductible</h2>
+        <p>This is the amount you must pay per person each year before your plan starts making payments for major services. You do not have to meet a deductible to receive coverage for preventive and diagnostic services. There is a separate deductible for orthodontics.</p>
+    </li>
+    <li class="li">
+        <img src={static3}  alt="static 3" class="staticimage">
+        <h2>$2,000 Annual maximum</h2>
+        <p>This is the total amount per person your plan will pay toward the cost of dental care each calendar year.</p>
+    </li>
+    <li class="li">
+        <img src={static4}  alt="static 4" class="staticimage">
+        <h2>1,994 Network Dentists</h2>
+        <p>Get trusted care from a network of dentists who meet quality standards and agree to negotiated fees. You can save up to 40% on dentist fees1 when you stay in-network, even if you need services that aren’t covered right away because of a waiting period.</p>
+    </li>
+
+</ul>
+    </section>
+
+    <section class="shopping-details__list">
+        <div class="shopping-details__list-inner"> 
+
+            <h2>Benefits </h2>
+            <p class="shopping-features__feature-title" >
+                This is just a summary. Complete benefits can be found in the Policy and Benefit Details document below.
+            </p>
+            <h2 class="shopping-features__waiting-period">Available immediately</h2>
+            <div class="shopping-features__disclaimer">
+                <p>This is your share of the treatment cost for the following covered preventive and diagnostic dental services. These services have no waiting period and no deductible.</p>
+            </div>
+            <div class="shopping-features__header">
+                <span>You Pay</span>
+
+            </div>
+            <ul class="shopping-item-list">
+                <li>
+                    
+                    <span> Office visit</span>
+                    <span>0%</span>
+                </li>
+                <li>
+                    <span> Exams</span>
+                    <span>0%</span>
+                </li>
+                <li>
+                    <span> Cleanings</span>
+                    <span>0%</span>
+                </li>
+                <li>
+                    <span> X-rays</span>
+                    <span>0%</span>
+                </li>
+            </ul>
+            <h2 class="shopping-features__waiting-period">Available after 6 Months</h2>
+            <div class="shopping-features__disclaimer">
+                <p>This is your share of the treatment cost for the following covered dental services after the waiting period and once you meet your deductible.</p>
+            </div>
+            <div class="shopping-features__header">
+                <span>You Pay</span>
+
+            </div>
+            <ul class="shopping-item-list">
+                <li>
+                    <span> Fillings</span>
+                    <span>20%</span>
+                </li>
+                <li>
+                    <span> Tooth removal, simple</span>
+                    <span>20%</span>
+                </li>
+                <li>
+                    <span> Teeth whitening</span>
+                    <span>20%</span>
+                </li>
+                <li>
+                    <span>Mouth guards</span>
+                    <span>20%</span>
+                </li>
+            </ul>
+
+            <h2 class="shopping-features__waiting-period">Available after 12 Months</h2>
+            <div class="shopping-features__disclaimer">
+                <p>This is your share of the treatment cost for the following covered dental services after the waiting period and once you meet your deductible.</p>
+            </div>
+            <div class="shopping-features__header">
+                <span>You Pay</span>
+
+            </div>
+            <ul class="shopping-item-list">
+                <li>
+                    <span> Tooth removal, surgical</span>
+                    <span>50%</span>
+                </li>
+                <li>
+                    <span> Root canals</span>
+                    <span>50%</span>
+                </li>
+                <li>
+                    <span> Gum cleanings</span>
+                    <span>50%</span>
+                </li>
+                <li>
+                    <span> Gum treatments</span>
+                    <span>50%</span>
+                </li>
+                <li>
+                    <span> Denture repair</span>
+                    <span>50%</span>
+                </li>
+                <li>
+                    <span>Complete dentures</span>
+                    <span>50%</span>
+                </li>
+                <li>
+                    <span> Implants</span>
+                    <span>50%</span>
+                </li>
+                <li>
+                    <span> Crowns</span>
+                    <span>50%</span>
+                </li>
+                <li>
+                    <span>Orthodontics, child and adult</span>
+                    <span>20%</span>
+                </li>
+            </ul>
+        </div>
+        
+    </section>
+    <footer>
+        <br/>
+        <br/>
+
+        <img class="footer" src={deltalogo} alt="Delta Dental Logo">
+    </footer>
+    <br/>
+    </template>
+</section>
+
+
+<section >
+    <template if:true={BuyPlan}>
+        <div class="slds-grid ">
+            <div class="slds-col   headerplanname">
+                <header>
+                    <h2>  <lightning-icon icon-name="utility:back"   size="x-small" class="row dark-background" onclick={backfour} alternative-text="Connected" variant="inverse" 
+                        ></lightning-icon>
+                    <strong class="headertext">{selectedPlanDetails.name}</strong></h2>
+                </header>
+            </div>
+            </div>
+            <section>
+                <div class="top-section-lg">
+                    <div class="page-container">
+
+                  
+                    <h1 class="header--enrollee-header" >Personal Info</h1>
+                    <div role="alert" class="error-container global-margin">
+                    </div>
+                    <span class="required-fields-text">All fields are required unless indicated optional.</span>
+                
+                <div class=" detailform">
+                    <div>Profile</div>
+                    <lightning-input  type="text" label="First Name" placeholder="First Name" onchange={firstname}></lightning-input>
+                    <lightning-input  type="text" label="Middle Initial (optional)" placeholder="MI" onchange={middlename}></lightning-input>
+                    <lightning-input  type="text" label="Last Name" placeholder="Last Name" onchange={lastname}></lightning-input>
+                    <lightning-combobox
+                        name="Gender "
+                        label="Gender "
+                        value={value}
+                        placeholder="Select Gender"
+                        options={genderoptions}
+                        onchange={handlegenderChange} ></lightning-combobox>
+
+                        <lightning-input label="Date of Birth" type="date" placeholder="Enter Date of Birth" value={storedBirthDate} name="dob" onchange={handleDob}></lightning-input>
+                        <lightning-input  type="email" label="Email Address" placeholder="123@gmail.com" onchange={handleEmail}></lightning-input>
+                        
+                   
+                    </div> 
+
+                    <div class="submit-footer">
+                        <div class="bottom-nav">
+                            <a href="#" class="link-with-button" >Back to Quote</a>
+                            <button  class="btn multi-btn primary inline-block" name="submit Button"  onclick={handlesubmit}>
+          
+                                Submit
+                                
+                              </button>
+                        </div>
+                        <div class="div"></div>
+                    </div>
+                    <div class="containerlast">
+                        <h2 class="product-name"  >{selectedPlanDetails.name} <br/> {selectedPlanDetails.pname}</h2>
+    
+                        <div class="containerlastcss"></div>
+                        <div class="price-summary-header" tabindex="0" aria-label="cost breakup">
+                            <h3 class="h3">Cost Details</h3>
+                            <p tabindex="0">
+                              <span class="plan-frequency">Monthly premium</span>
+                              <span class="cost-per-person"> for {numPeople} person(s): <br/> </span>
+                              <span class="plan-price">${amount}</span>
+                            </p>
+                            <p class="date">Effective {futureDate} – {yearfuturedate}</p>
+                          </div>
+
+
+
+                          <div class="price-details-wrapper">
+                            <div class="price-details-wrapper__row">
+                                <div class="borderline">
+
+                                
+                              <div class="monthlyPaymentText price-details-wrapper__row--price ">
+                                <label  class=" tooltip-label">
+                                  First Payment
+                                </label>
+                              </div>
+                              <div class="price-details-wrapper__row--price right-align">
+                  
+                                <label class="firstPaymentPrice right-align" >${firstpayment}</label>
+                              </div>
+                              <div class="price-details-wrapper__row">
+                                  <div class="price-details-wrapper__row--price">
+                                      
+                                      <label class=" tooltip-label">
+                                          One-time Enrollment Fee
+                                          
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="price-details-wrapper__row--price right-align">
+                                        <label class="oneTimePayment right-align" > ${selectedPlanDetails.enrollmentFee}</label>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="price-details-wrapper__row " >
+                                    <div class="totalprice">
+                                    <div class="price-details-wrapper__row--price total-due">
+                                        <span>Total Due</span>
+                                    </div>
+                                    <div class="price-details-wrapper__row--price right-align total-due">
+                                        <span class="totalDuePrice">${totalpayment}</span>
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                
+                        </section>
+                        
+            <footer>
+                <br/>
+                <br/>
+
+                <img class="footer" src={deltalogo} alt="Delta Dental Logo">
+            </footer>
+
+    </template>
+</section>
+
+
+
+
+</template>
+  

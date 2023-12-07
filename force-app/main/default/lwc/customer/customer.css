@@ -1,0 +1,28 @@
+
+
+.plancss {
+    background-color: rgb(168, 218, 252);
+    
+ 
+}
+.cardcss {
+    background-color: rgb(249, 248, 248, 1);
+    padding: 20px; /* Adjust padding as needed */
+  
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    
+  
+   
+}
+
+.formcss {
+    background-color: rgb(243, 245, 247);
+    
+    padding: 20px; /* Adjust padding as needed */
+  
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
